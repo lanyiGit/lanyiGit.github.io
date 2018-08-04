@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Sigmar One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Lanyi77,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring MVC相关注解详解@RequestMapping12345678910@Controller@RequestMapping(value=&quot;/user&quot;)public class BookController &amp;#123;    @RequestMapping(value=&quot;/userInfo&quot;)    public String getUserInfo()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Mvc常用注解">
+<meta property="og:url" content="http://yoursite.com/2018/08/04/Spring MVC/index.html">
+<meta property="og:site_name" content="Lanyi77">
+<meta property="og:description" content="Spring MVC相关注解详解@RequestMapping12345678910@Controller@RequestMapping(value=&quot;/user&quot;)public class BookController &amp;#123;    @RequestMapping(value=&quot;/userInfo&quot;)    public String getUserInfo()&amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-04T12:12:31.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Mvc常用注解">
+<meta name="twitter:description" content="Spring MVC相关注解详解@RequestMapping12345678910@Controller@RequestMapping(value=&quot;/user&quot;)public class BookController &amp;#123;    @RequestMapping(value=&quot;/userInfo&quot;)    public String getUserInfo()&amp;#123;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '8/4/2018 18:00:00',
+    onlineAPI: '',
+    site: {
+      title: 'Lanyi77',
+      subtitle: '',
+      author: 'Lanyi77'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/favicon.ico',
+      hidden: '/images/failure.ico',
+      show_text: '(/≧▽≦/)咦！又好了！',
+      hide_text: '(●—●)喔哟，崩溃啦！'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/04/Spring MVC/"/>
+
+
+
+
+
+  <title>Spring Mvc常用注解 | Lanyi77</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">没有</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/mztkn.jpg)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            <span>L</span><span>a</span><span>n</span><span>y</span><span>i</span><span>7</span><span>7</span>
+          </div>
+          <div id="guide" class="guide">
+            <span>L</span><span>a</span><span>n</span><span>y</span><span>i</span><span>7</span><span>7</span>
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/头像.jpg" alt="Lanyi77" />
+    <h2 class="site-master-description" itemprop="description">
+        
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">08月</div>
+			<div class="post-day">04</div>
+	</div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/04/Spring MVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lanyi77">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lanyi77">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring Mvc常用注解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T20:06:29+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h1><h2 id="相关注解详解"><a href="#相关注解详解" class="headerlink" title="相关注解详解"></a>相关注解详解</h2><h3 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"/userInfo"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"userInfo"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="value属性：指定请求的实际路径"><a href="#value属性：指定请求的实际路径" class="headerlink" title="value属性：指定请求的实际路径"></a><code>value</code>属性：指定请求的实际路径</h4><ul>
+<li>普通的具体值，如前面的value=”/book”：<code>@RequestMapping(value=&quot;/book&quot;)</code></li>
+<li><p>包含变量，可用<code>@PathVariable</code>注解获取请求变量到方法参数变量</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/&#123;userId&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getBookById</span><span class="params">(@PathVariable String userId,Model model)</span></span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">"userId"</span>, bookId);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"user"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用通配符</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/id?"</span>)<span class="comment">//可匹配“/user/id1”或“/user/ida”，但不匹配“/user/id”或“/user/idaa”</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/id*"</span>)<span class="comment">//可匹配“/user/idabc”或“/user/id”，但不匹配“/user/idabc/abc”</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/id/*"</span>)<span class="comment">//可匹配“/user/id/abc”，但不匹配“/user/idabc”</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/id/**/&#123;id&#125;"</span>)<span class="comment">//可匹配“/user/id/abc/abc/123”或“/user/id/123”</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正则表达式</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/&#123;idPre:\\d+&#125;-&#123;idNum:\\d+&#125;"</span>)<span class="comment">//可以匹配“/user/123-1”，但不能匹配“/user/abc-1”，这样可以设计更加严格的规则。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多个请求</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=&#123;<span class="string">"/user"</span>,<span class="string">"/car"</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="method属性：指定请求类型"><a href="#method属性：指定请求类型" class="headerlink" title="method属性：指定请求类型"></a><code>method</code>属性：指定请求类型</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user/&#123;userId&#125;"</span>,method=&#123;RequestMethod.GET,RequestMethod.POST&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="params：指定request中必须包含某些参数值是，才让该方法处理。"><a href="#params：指定request中必须包含某些参数值是，才让该方法处理。" class="headerlink" title="params：指定request中必须包含某些参数值是，才让该方法处理。"></a><code>params</code>：指定request中必须包含某些参数值是，才让该方法处理。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/order"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//“myParam=myValue”,如：http://localhost:8080/order/orderD?myParam=myValue</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/orderD"</span>,params=<span class="string">"myParam=myValue"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findOrderD</span><span class="params">(@PathVariable String orderId, @PathVariable String orderDId, Model model)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"orderDInfo"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="headers-指定request中必须包含某些指定的header值，才能让该方法处理请求。"><a href="#headers-指定request中必须包含某些指定的header值，才能让该方法处理请求。" class="headerlink" title="headers 指定request中必须包含某些指定的header值，才能让该方法处理请求。"></a><code>headers</code> 指定request中必须包含某些指定的header值，才能让该方法处理请求。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示请求的路径必须为“/header/id 且请求头中必须有“Accept=application/json”参数即可匹配。</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/header/id"</span>, headers = <span class="string">"Accept=application/json"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="consumes-指定处理请求的提交内容类型（Content-Type），例如application-json-text-html。"><a href="#consumes-指定处理请求的提交内容类型（Content-Type），例如application-json-text-html。" class="headerlink" title="consumes 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html。"></a><code>consumes</code> 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/pets"</span>, method = RequestMethod.POST, consumes=<span class="string">"application/json"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addPet</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="produces-指定返回的内容类型，仅当request请求头中的-Accept-类型中包含该指定类型才返回。"><a href="#produces-指定返回的内容类型，仅当request请求头中的-Accept-类型中包含该指定类型才返回。" class="headerlink" title="produces 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回。"></a><code>produces</code> 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/pets"</span>, method = RequestMethod.GET, produces=<span class="string">"application/json"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Pet <span class="title">getPet</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RequestParam-绑定单个请求参数值"><a href="#RequestParam-绑定单个请求参数值" class="headerlink" title="@RequestParam 绑定单个请求参数值"></a>@RequestParam 绑定单个请求参数值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求中包含username参数（如/user?username=zhang），则自动传入。</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/user"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam1</span><span class="params">(@RequestParam String username)</span></span>&#123;</span><br><span class="line">    <span class="comment">//..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="value：请求参数名，如username表示请求的参数区中的名字为username的参数的值将传入"><a href="#value：请求参数名，如username表示请求的参数区中的名字为username的参数的值将传入" class="headerlink" title="value：请求参数名，如username表示请求的参数区中的名字为username的参数的值将传入"></a><code>value</code>：请求参数名，如username表示请求的参数区中的名字为username的参数的值将传入</h4><h4 id="required：是否必须存在，默认true，不存在则将抛出异常"><a href="#required：是否必须存在，默认true，不存在则将抛出异常" class="headerlink" title="required：是否必须存在，默认true，不存在则将抛出异常"></a><code>required</code>：是否必须存在，默认true，不存在则将抛出异常</h4><h4 id="defaultValue：默认值，表示如果请求中没有同名参数时的默认值，设置时，自动将required设为false"><a href="#defaultValue：默认值，表示如果请求中没有同名参数时的默认值，设置时，自动将required设为false" class="headerlink" title="defaultValue：默认值，表示如果请求中没有同名参数时的默认值，设置时，自动将required设为false"></a><code>defaultValue</code>：默认值，表示如果请求中没有同名参数时的默认值，设置时，自动将required设为false</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*   表示请求中可以没有名字为username的参数，如果没有默认为null，此处需要注意如下几点：</span></span><br><span class="line"><span class="comment">*   1.基本类型：必须有值，否则抛出异常，如果允许空值请使用包装类代替。</span></span><br><span class="line"><span class="comment">*   2.Boolean包装类型：默认Boolean.FALSE，其他引用类型默认为null。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam4</span><span class="params">(@RequestParam(value=<span class="string">"username"</span>,required=<span class="keyword">false</span>)</span> String username)</span>&#123;</span><br><span class="line">    <span class="comment">// ..</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求中有多个同名参数时，方法参数可用集合或数组接收</span></span><br></pre></td></tr></table></figure>
+<h3 id="PathVariable-绑定URI模板变量值"><a href="#PathVariable-绑定URI模板变量值" class="headerlink" title="@PathVariable 绑定URI模板变量值"></a>@PathVariable 绑定URI模板变量值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@PathVariable用于将请求中的模板变量映射到功能处理方法的参数上。</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/users/&#123;userId&#125;/topics/&#123;topicId&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(@PathVariable(value=<span class="string">"userId"</span>)</span> <span class="keyword">int</span> userId,@<span class="title">PathVariable</span><span class="params">(value=<span class="string">"topicId"</span>)</span> <span class="keyword">int</span> topicId)</span>&#123;</span><br><span class="line">    <span class="comment">// ..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="@ModelAttribute"></a>@ModelAttribute</h3><pre><code>ModelAttribute可以应用在方法参数上或方法上
+当注解在方法参数上时会将注解的参数对象添加到Model中
+当注解在请求处理方法Action上时会将该方法变成一个非请求处理的方法，但其它Action被调用时会首先调用该方法。
+*这个属性很重要，回头单独写一篇...
+</code></pre><h3 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="@SessionAttributes"></a>@SessionAttributes</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/demo"</span>)</span><br><span class="line"><span class="comment">//(1)将ModelMap中属性名为currUser的属性放到Session属性列表中，以便这个属性可以跨请求访问</span></span><br><span class="line"><span class="meta">@SessionAttributes</span>(<span class="string">"currUser"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"/getUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUser</span><span class="params">(ModelMap model)</span></span>&#123;</span><br><span class="line">        User user=<span class="keyword">new</span> User();</span><br><span class="line">        user.setUser_name(<span class="string">"zhangsan"</span>);</span><br><span class="line">        user.setUser_age(<span class="number">25</span>);</span><br><span class="line">        <span class="comment">//(2)向ModelMap中添加一个属性</span></span><br><span class="line">        model.addAttribute(<span class="string">"currUser"</span>,user);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/demo/user"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"/getUser1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUser1</span><span class="params">(ModelMap model)</span></span>&#123;</span><br><span class="line">        User user=(User)model.get(<span class="string">"currUser"</span>);</span><br><span class="line">        System.out.println(user.getUser_name());</span><br><span class="line">        System.out.println(user.getUser_age());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"demo/user1"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="通过-ModelAttribute绑定"><a href="#通过-ModelAttribute绑定" class="headerlink" title="通过@ModelAttribute绑定"></a>通过@ModelAttribute绑定</h4><pre><code>@SessionAttributes 是用来在 controller 内部共享 model 属性的。我们可以在需要访问 Session 属性的 controller 上加上 @SessionAttributes，然后在 action 需要的 User 参数上加上 @ModelAttribute，并保证两者的属性名称一致。SpringMVC 就会自动将 @SessionAttributes 定义的属性注入到 ModelMap 对象，在 setup action 的参数列表时，去 ModelMap 中取到这样的对象，再添加到参数列表。只要我们不去调用 SessionStatus 的 setComplete() 方法，这个对象就会一直保留在 Session 中，从而实现 Session 信息的共享。
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span>  </span><br><span class="line"><span class="meta">@SessionAttributes</span>(<span class="string">"currentUser"</span>)  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingController</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">(@ModelAttribute(<span class="string">"currentUser"</span>)</span> User user)</span>&#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@SessionAttributes</code>也允许指定多个属性<code>@SessionAttributes({“attr1”,&quot;attr2”})</code><br>通过类型指定要<code>session</code>化的<code>ModelMap</code>属性，如<code>@SessionAttributes(types = User.class)</code><br>指定多个类型，如<code>@SessionAttributes(types = {User.class,Dept.class})</code><br>还可以联合使用属性名和属性类型指定：<code>@SessionAttributes(types = {User.class,Dept.class},value={“attr1”,&quot;attr2”})</code></p>
+<p><code>@SessionAttributes</code>清除<br><code>@SessionAttributes</code>需要清除时，使用<code>SessionStatus.setComplete();</code>来清除。注意，它只清除<code>@SessionAttributes</code>的session，不会清除HttpSession的数据。故如用户身份验证对象的session一般不用它来实现，还是用session.setAttribute等传统的方式实现。</p>
+<h3 id="Responsebody与-RequestBody"><a href="#Responsebody与-RequestBody" class="headerlink" title="@Responsebody与@RequestBody"></a>@Responsebody与@RequestBody</h3><pre><code>@Responsebody表示该方法的返回结果直接写入HTTP response body中。一般在异步获取数据时使用，在使用@RequestMapping后，返回值通常解析为跳转路径，加上@Responsebody后返回结果不会被解析为跳转路径，而是直接写入HTTP response body中。比如异步获取json数据，加上@Responsebody后，会直接返回json数据。
+@RequestBody将HTTP请求正文插入方法中,使用适合的HttpMessageConverter将请求体写入某个对象。
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    $(<span class="string">"#btn2"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url=<span class="string">'&lt;%=request.getContextPath()%&gt;/User/addUserInfo'</span>;</span><br><span class="line">    <span class="keyword">var</span> data=&#123;<span class="string">"user_name"</span>:$(<span class="string">"#userName"</span>).val(),<span class="string">"user_sex"</span>:$(<span class="string">"#userSex"</span>).val(),<span class="string">"user_age"</span>:$(<span class="string">"#userAge"</span>).val(),</span><br><span class="line">    <span class="string">"user_email"</span>:$(<span class="string">"#userEmail"</span>).val(),<span class="string">"user_telephone"</span>:$(<span class="string">"#userTelephone"</span>).val(),<span class="string">"user_education"</span>:$(<span class="string">"#userEducation"</span>).val(),</span><br><span class="line">    <span class="string">"user_title"</span>:$(<span class="string">"#userTitle"</span>).val()&#125;;</span><br><span class="line"></span><br><span class="line">     $.ajax(&#123;</span><br><span class="line">       type:<span class="string">'POST'</span>,</span><br><span class="line">       contentType : <span class="string">'application/json'</span>,</span><br><span class="line">      url:url,</span><br><span class="line">      dataType:<span class="string">"json"</span>,</span><br><span class="line">      data:<span class="built_in">JSON</span>.stringify(data),</span><br><span class="line">      <span class="keyword">async</span>:<span class="literal">false</span>,</span><br><span class="line">      success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">          alert(<span class="string">"新增成功！"</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">      error: <span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest, textStatus, errorThrown</span>)</span>&#123;</span><br><span class="line">           alert(XMLHttpRequest.status);</span><br><span class="line">           alert(XMLHttpRequest.readyState);</span><br><span class="line">           alert(textStatus);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/addUserInfo"</span>,method=RequestMethod.POST)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="comment">//RequestBody将请求中的data写入UserModel对象中</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addUserInfo</span><span class="params">(@RequestBody UserModel user)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"user_name--------"</span>+user.getUser_name());</span><br><span class="line">    System.out.println(<span class="string">"user_sex--------"</span>+user.getUser_sex());</span><br><span class="line">    System.out.println(<span class="string">"user_age--------"</span>+user.getUser_age());</span><br><span class="line">    System.out.println(<span class="string">"user_email--------"</span>+user.getUser_email());</span><br><span class="line">    System.out.println(<span class="string">"user_title--------"</span>+user.getUser_title());</span><br><span class="line">    System.out.println(<span class="string">"user_education--------"</span>+user.getUser_education());</span><br><span class="line">    System.out.println(<span class="string">"user_telephone--------"</span>+user.getUser_telephone());</span><br><span class="line">    <span class="comment">//不会被解析为跳转路径，而是直接写入HTTP response body中</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&#123;&#125;"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@RequestBody</code><br>作用：</p>
+<ol>
+<li>该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对象上；</li>
+<li>再把HttpMessageConverter返回的对象数据绑定到 controller中方法的参数上。</li>
+</ol>
+<p>使用时机：</p>
+<ol>
+<li>GET、POST方式提时， 根据request header Content-Type的值来判断:<br> application/x-www-form-urlencoded， 可选（即非必须，因为这种情况的数据@RequestParam, @ModelAttribute也可以处理，当然@RequestBody也能处理）；<br> multipart/form-data, 不能处理（即使用@RequestBody不能处理这种格式的数据）；<br> 其他格式， 必须（其他格式包括application/json, application/xml等。这些格式的数据，必须使用@RequestBody来处理）</li>
+<li>PUT方式提交时， 根据request header Content-Type的值来判断:<br> application/x-www-form-urlencoded， 必须；<br> multipart/form-data, 不能处理；<br> 其他格式， 必须；<br> 说明：request的body部分的数据编码格式由header部分的Content-Type指定；</li>
+</ol>
+<p><code>@ResponseBody</code><br>作用：<br>    该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。<br>使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/02/Spring FrameWork/" rel="next" title="那些年，让我们一起着迷的Spring">
+                <i class="fa fa-chevron-left"></i> 那些年，让我们一起着迷的Spring
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/头像.jpg"
+                alt="Lanyi77" />
+            
+              <p class="site-author-name" itemprop="name"><span style="opacity:.2;">Lanyi77</span></p>
+              <p class="site-description motion-element" itemprop="description">~~</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-MVC"><span class="nav-number">1.</span> <span class="nav-text">Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关注解详解"><span class="nav-number">1.1.</span> <span class="nav-text">相关注解详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RequestMapping"><span class="nav-number">1.1.1.</span> <span class="nav-text">@RequestMapping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#value属性：指定请求的实际路径"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">value属性：指定请求的实际路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#method属性：指定请求类型"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">method属性：指定请求类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#params：指定request中必须包含某些参数值是，才让该方法处理。"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">params：指定request中必须包含某些参数值是，才让该方法处理。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#headers-指定request中必须包含某些指定的header值，才能让该方法处理请求。"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">headers 指定request中必须包含某些指定的header值，才能让该方法处理请求。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#consumes-指定处理请求的提交内容类型（Content-Type），例如application-json-text-html。"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">consumes 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#produces-指定返回的内容类型，仅当request请求头中的-Accept-类型中包含该指定类型才返回。"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">produces 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RequestParam-绑定单个请求参数值"><span class="nav-number">1.1.2.</span> <span class="nav-text">@RequestParam 绑定单个请求参数值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#value：请求参数名，如username表示请求的参数区中的名字为username的参数的值将传入"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">value：请求参数名，如username表示请求的参数区中的名字为username的参数的值将传入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#required：是否必须存在，默认true，不存在则将抛出异常"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">required：是否必须存在，默认true，不存在则将抛出异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#defaultValue：默认值，表示如果请求中没有同名参数时的默认值，设置时，自动将required设为false"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">defaultValue：默认值，表示如果请求中没有同名参数时的默认值，设置时，自动将required设为false</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PathVariable-绑定URI模板变量值"><span class="nav-number">1.1.3.</span> <span class="nav-text">@PathVariable 绑定URI模板变量值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ModelAttribute"><span class="nav-number">1.1.4.</span> <span class="nav-text">@ModelAttribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SessionAttributes"><span class="nav-number">1.1.5.</span> <span class="nav-text">@SessionAttributes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-ModelAttribute绑定"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">通过@ModelAttribute绑定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Responsebody与-RequestBody"><span class="nav-number">1.1.6.</span> <span class="nav-text">@Responsebody与@RequestBody</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>~~</p>
+
+<p>© <span itemprop="copyrightYear">2018</span> Lanyi77.
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <!--<a href="/" target="_blank">站点地图</a>.>
+    .
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">Lanyi77</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <!--<canvas id="live2d" width="150" height="400" class="live2d"></canvas>-->
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
