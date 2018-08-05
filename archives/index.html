@@ -36,12 +36,6 @@
 
 
 
-  
-  
-    
-  
-  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -69,7 +63,7 @@
   
     
     
-    <link href="//fonts.cat.net/css?family=Sigmar One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.loli.net/css?family=Sigmar One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -79,30 +73,24 @@
 
   
 
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 
 
   
 
-<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=0.0.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+<link href="/css/main.css?v=0.0.20" rel="stylesheet" type="text/css" />
 
 
 
 
 
-  <meta name="keywords" content="Lanyi77,blog" />
+
+
+
+  <meta name="keywords" content="Qiqi77,blog" />
 
 
 
@@ -114,12 +102,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lanyi77">
+<meta property="og:title" content="Hi, Qiqi77">
 <meta property="og:url" content="http://yoursite.com/archives/index.html">
-<meta property="og:site_name" content="Lanyi77">
+<meta property="og:site_name" content="Hi, Qiqi77">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lanyi77">
+<meta name="twitter:title" content="Hi, Qiqi77">
 
 
 
@@ -128,15 +116,15 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '0.0.4',
+    version: '0.0.20',
     sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
     tabs: true,
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     since: '8/4/2018 18:00:00',
-    onlineAPI: '',
+    onlineAPI: 'wss://api.prprpr.me/online/',
     site: {
-      title: 'Lanyi77',
+      title: 'Hi, Qiqi77',
       subtitle: '',
       author: 'Lanyi77'
     },
@@ -152,16 +140,16 @@
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
     leancloud: {
-      enable: false,
-      appID: '',
-      appKey: ''
+      enable: true,
+      appID: 'Ti5mwFDXXbpWqeWdaydLNfOS-gzGzoHsz',
+      appKey: 'rXpryRyVs5jlk2LAGGI1bfEd'
     },
     favicon: {
       visibilitychange: true,
-      narmal: '/images/favicon.ico',
-      hidden: '/images/failure.ico',
-      show_text: '(/≧▽≦/)咦！又好了！',
-      hide_text: '(●—●)喔哟，崩溃啦！'
+      narmal: '',
+      hidden: '',
+      show_text: '🎉 你走啦~',
+      hide_text: '🎉 你又来啦~'
     }
   };
 </script>
@@ -169,7 +157,7 @@
 
 
   
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 
 
 
@@ -180,7 +168,7 @@
 
 
 
-  <title>归档 | Lanyi77</title>
+  <title>归档 | Hi, Qiqi77</title>
   
 
 
@@ -201,7 +189,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans" class="theme-darling">
 
   
   
@@ -217,12 +205,12 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-主页">
+        <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            主页
+            首页
           </a>
         </li>
       
@@ -244,7 +232,7 @@
             <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
           </form>
       </li>
-      <li class="menu-item online"><span id="online-count">没有</span>人在线</li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
     </ul>
   
 
@@ -260,10 +248,10 @@
         <span class="logo-line-before"><i></i></span>
         <div class="site-title">
           <div id="animate" class="animate">
-            <span>L</span><span>a</span><span>n</span><span>y</span><span>i</span><span>7</span><span>7</span>
+            <span>H</span><span>i</span><span>,</span><span> </span><span>Q</span><span>i</span><span>q</span><span>i</span><span>7</span><span>7</span>
           </div>
           <div id="guide" class="guide">
-            <span>L</span><span>a</span><span>n</span><span>y</span><span>i</span><span>7</span><span>7</span>
+            <span>H</span><span>i</span><span>,</span><span> </span><span>Q</span><span>i</span><span>q</span><span>i</span><span>7</span><span>7</span>
           </div>
         </div>
         <span class="logo-line-after"><i></i></span>
@@ -285,7 +273,7 @@
 <div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-master-avatar" itemprop="image" src="/images/头像.jpg" alt="Lanyi77" />
     <h2 class="site-master-description" itemprop="description">
-        
+        <span >Hello</span> <span >World.</span>
     </h2>
 </div>
 
@@ -468,7 +456,7 @@
                 src="/images/头像.jpg"
                 alt="Lanyi77" />
             
-              <p class="site-author-name" itemprop="name"><span style="opacity:.2;">Lanyi77</span></p>
+              <p class="site-author-name" itemprop="name"><span style="opacity:.2;">Qiqi</span>77</p>
               <p class="site-description motion-element" itemprop="description">~~</p>
           </div>
 
@@ -529,13 +517,13 @@
       <div class="footer-image"></div>
       <div class="footer-inner">
         <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
-<p>~~</p>
+<p>托管于<a href="https://github.com/" target="_blank" rel="nofollow"> GitHub</a>.</p>
 
-<p>© <span itemprop="copyrightYear">2018</span> Lanyi77.
+<p>© <span itemprop="copyrightYear">2018</span> Hi, Qiqi77.
     由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
-    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
-    <!--<a href="/" target="_blank">站点地图</a>.>
-    .
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.20.
+    <!--<a href="/" target="_blank">站点地图</a>.
+    .-->
 </p>
 <p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">Lanyi77</span>. </p>
 
@@ -559,13 +547,15 @@
     
 
     <canvas id="evanyou"></canvas>
-    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+   
+    <div id="aplayer-fixed">
+    </div>
 
     
 
   </div>
 
-  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.20"></script>
 
   
 
@@ -584,5 +574,36 @@
 
   
 
+
+  <!--<script>
+    // remove service worker cache
+    // from https://stackoverflow.com/questions/33704791/how-do-i-uninstall-a-service-worker
+    "use strict";
+    if(navigator.serviceWorker)
+    {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+  </script>-->
+
+  <script>
+    var serviceWorkerUri = '/sw.js';
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register(serviceWorkerUri).then(function() {
+          if (navigator.serviceWorker.controller) {
+            console.log('Assets cached by the controlling service worker.');
+          } else {
+            console.log('Please reload this page to allow the service worker to handle network operations.');
+          }
+        }).catch(function(error) {
+          console.log('ERROR: ' + error);
+        });
+    } else {
+        console.log('Service workers are not supported in the current browser.');
+    }
+  </script>
 </body>
 </html>
