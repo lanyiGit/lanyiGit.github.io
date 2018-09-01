@@ -1,5 +1,6 @@
 ---
     title: Hello Blog
+    date: 2018-08-04 18:00:00
 ---
 
 # Hello Blog
