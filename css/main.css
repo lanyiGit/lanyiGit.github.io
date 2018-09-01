@@ -1798,7 +1798,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f4012e;
+  background: #78ff5d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3774,15 +3774,6 @@ a {
     overflow: hidden;
   }
 }
-.footer-image {
-  background: url("../images/footer.png") no-repeat 50%;
-  height: 368px;
-  z-index: 1;
-  position: absolute;
-  bottom: 48px;
-  width: 100%;
-  pointer-events: none;
-}
 .my-face {
   animation: my-face 5s infinite ease-in-out;
   display: inline-block;
@@ -5272,7 +5263,7 @@ a {
   text-shadow: 1px 1px 0 #ff3f1a, -1px -1px 0 #00a7e0;
 }
 .theme-darling .site-brand-wrapper {
-  background-image: url("/images/mztkn.jpg") !important;
+  background-image: url("/images/header1.jpg") !important;
 }
 .theme-darling .site-master-description span:nth-child(1) {
   color: #00a7e0 !important;
