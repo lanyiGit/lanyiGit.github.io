@@ -1798,7 +1798,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #78ff5d;
+  background: #abee2a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -5261,9 +5261,6 @@ a {
 }
 .theme-darling .site-title {
   text-shadow: 1px 1px 0 #ff3f1a, -1px -1px 0 #00a7e0;
-}
-.theme-darling .site-brand-wrapper {
-  background-image: url("/images/header1.jpg") !important;
 }
 .theme-darling .site-master-description span:nth-child(1) {
   color: #00a7e0 !important;
