@@ -1798,7 +1798,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #abee2a;
+  background: #7e5226;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3148,7 +3148,7 @@ a {
 }
 .site-brand-wrapper {
   position: relative;
-  height: 650px;
+  height: 550px;
   width: 100%;
   background-size: cover;
   background-position: center 50%;
